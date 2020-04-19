@@ -8,7 +8,7 @@ build protobuf pb.c / pb.h files:
 
 
 ```
- .\protobuf-c.exe --c_out=. .\test.proto
+ .\protoc-c.exe --c_out=. .\test.proto
 ```
 
 
@@ -29,11 +29,12 @@ add version info from [build-cmake/CMakeLists.txt](https://github.com/protobuf-c
 
 delete exe name test:
 
+replace string:
 ```
-if (invocation_basename == legacy_name) 
+std::string invocation_basename = invocation_name.substr(invocation_name.find_last_of("/") + 1);
 ```
-replace to:
+to:
 
 ```
-if (true || (invocation_basename == legacy_name)) 
+std::string invocation_basename = "protoc-c";
 ```
